@@ -1,5 +1,6 @@
 import SbChannel from '@sendbird/uikit-react/Channel'
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom'
+import { useCustomRouting } from '../hooks/useCustomRouting'
 
 export function Channel() {
   const { channelUrl } = useParams()
@@ -8,6 +9,7 @@ export function Channel() {
   const createdAt = searchParams.get('createdAt')
   const numCreatedAt = Number(createdAt)
   const navigate = useNavigate()
+  useCustomRouting({ currentChannel: channelUrl })
   return (
     <div style={{ height: '100vh' }}>
       <SbChannel
